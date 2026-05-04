@@ -1,11 +1,45 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const siteName = "My Website";
+const features = [
+  { title: "Fast", desc: "Astro ships zero JS by default." },
+  { title: "Simple", desc: "Write HTML, CSS, and a little JS." },
+  { title: "Deployable", desc: "Live on Vercel in under a minute." },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{siteName}</title>
+  </head>
+  <body>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Hello, I'm building with Astro 🚀</h1>
+      <p>A fast, modern website — built by Katie, powered by Claude.</p>
+      <a href="/about">Learn more →</a>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      {features.map(f => (
+        <div class="card">
+          <h2>{f.title}</h2>
+          <p>{f.desc}</p>
+        </div>
+      ))}
+    </section>
+
+  </body>
+</html>
+
+<style>
+  body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; }
+  .hero { text-align: center; padding: 4rem 0; }
+  .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+  .hero a { background: #7c3aed; color: white; padding: .6rem 1.4rem; border-radius: 6px; text-decoration: none; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .card { border: 1px solid #e5e7eb; padding: 1.5rem; border-radius: 8px; }
+</style>
